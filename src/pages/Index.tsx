@@ -2,7 +2,7 @@ const PHOTO_URL =
   "https://cdn.poehali.dev/projects/9681f9cf-1910-4e6b-81b0-1141b86e5856/bucket/fbef8a9a-ae90-47cf-a7e5-ac231c44c6ae.png";
 
 const BG_URL =
-  "https://cdn.poehali.dev/projects/9681f9cf-1910-4e6b-81b0-1141b86e5856/files/89a85a64-2aa6-4899-b817-3d31d20da859.jpg";
+  "https://cdn.poehali.dev/projects/9681f9cf-1910-4e6b-81b0-1141b86e5856/files/6ae31f6a-9336-44a2-a379-977e339c2e95.jpg";
 
 const stats = [
   { value: "15+", label: "שנות ניסיון" },
@@ -51,19 +51,19 @@ export default function Index() {
           {/* Dark overlay — full screen */}
           <div
             className="absolute inset-0"
-            style={{ background: "rgba(10, 25, 12, 0.78)" }}
+            style={{ background: "rgba(5, 14, 7, 0.88)" }}
           />
           {/* Extra dark on left for better text contrast */}
           <div
             className="absolute inset-0"
             style={{
-              background: "linear-gradient(to right, rgba(10,25,12,0.55) 0%, rgba(10,25,12,0.1) 60%, rgba(10,25,12,0.0) 100%)",
+              background: "linear-gradient(to right, rgba(5,14,7,0.65) 0%, rgba(5,14,7,0.15) 60%, rgba(5,14,7,0.0) 100%)",
             }}
           />
           {/* Subtle green tint */}
           <div
             className="absolute inset-0"
-            style={{ background: "linear-gradient(135deg, rgba(38,107,43,0.15) 0%, transparent 60%)" }}
+            style={{ background: "linear-gradient(135deg, rgba(38,107,43,0.12) 0%, transparent 60%)" }}
           />
         </div>
 
