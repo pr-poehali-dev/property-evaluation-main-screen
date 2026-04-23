@@ -37,44 +37,47 @@ export default function Index() {
       <main className="relative min-h-screen flex items-stretch">
         {/* Left: Photo block — desktop */}
         <div className="hidden lg:block absolute left-0 top-0 bottom-0 w-[45%]">
-          <div className="absolute inset-0 bg-forest-900 opacity-0 animate-fade-in" style={{ animationFillMode: "forwards", animationDelay: "0.1s" }} />
+          {/* White background behind person */}
+          <div className="absolute inset-0 bg-white" />
 
-          {/* Diagonal blend edge */}
-          <div
-            className="absolute top-0 right-0 bottom-0 w-28 z-10"
-            style={{ background: "linear-gradient(to left, white 0%, transparent 100%)" }}
-          />
+          {/* Subtle green accent strip on far left */}
+          <div className="absolute left-0 top-0 bottom-0 w-2 bg-forest-700" />
 
-          {/* Photo */}
+          {/* Photo — natural colors, cropped to person */}
           <img
             src={PHOTO_URL}
             alt="ראש החברה"
-            className="absolute inset-0 w-full h-full object-cover object-center opacity-0 animate-fade-in"
+            className="absolute inset-0 w-full h-full object-cover opacity-0 animate-fade-in"
             style={{
               animationFillMode: "forwards",
-              animationDelay: "0.4s",
-              mixBlendMode: "luminosity",
-              filter: "contrast(1.1) brightness(0.7)",
+              animationDelay: "0.3s",
+              objectPosition: "center top",
             }}
           />
 
-          {/* Green overlay */}
+          {/* Right-side fade to white to blend with text area */}
           <div
-            className="absolute inset-0 z-[1]"
-            style={{ background: "linear-gradient(135deg, rgba(22,56,26,0.5) 0%, rgba(10,31,12,0.72) 100%)" }}
+            className="absolute top-0 right-0 bottom-0 w-32 z-10"
+            style={{ background: "linear-gradient(to left, white 0%, transparent 100%)" }}
           />
 
-          {/* Stats */}
-          <div className="absolute bottom-16 right-0 left-0 z-[3] px-10 flex gap-10 opacity-0 animate-fade-up-delay3" style={{ animationFillMode: "forwards" }}>
+          {/* Bottom fade */}
+          <div
+            className="absolute bottom-0 left-0 right-0 h-48 z-10"
+            style={{ background: "linear-gradient(to top, white 0%, transparent 100%)" }}
+          />
+
+          {/* Stats on white background */}
+          <div className="absolute bottom-10 left-6 z-[11] flex gap-8 opacity-0 animate-fade-up-delay3" style={{ animationFillMode: "forwards" }}>
             {stats.map((s) => (
               <div key={s.label} className="text-center">
                 <div
-                  className="text-white text-3xl font-bold leading-none"
+                  className="text-forest-800 text-3xl font-bold leading-none"
                   style={{ fontFamily: '"Frank Ruhl Libre", serif' }}
                 >
                   {s.value}
                 </div>
-                <div className="text-green-300 text-xs mt-1">{s.label}</div>
+                <div className="text-forest-500 text-xs mt-1">{s.label}</div>
               </div>
             ))}
           </div>
@@ -140,19 +143,20 @@ export default function Index() {
           </div>
 
           {/* Mobile photo */}
-          <div className="lg:hidden mt-12 relative overflow-hidden aspect-[4/3]">
+          <div className="lg:hidden mt-12 relative overflow-hidden rounded-sm aspect-[3/4]">
             <img
               src={PHOTO_URL}
               alt="ראש החברה"
               className="w-full h-full object-cover"
-              style={{ filter: "contrast(1.05) brightness(0.8)" }}
+              style={{ objectPosition: "center top" }}
             />
-            <div className="absolute inset-0 bg-forest-900 opacity-30" />
-            <div className="absolute bottom-4 right-0 left-0 flex justify-center gap-8">
+            <div className="absolute bottom-0 left-0 right-0 h-24"
+              style={{ background: "linear-gradient(to top, white 0%, transparent 100%)" }} />
+            <div className="absolute bottom-3 right-0 left-0 flex justify-center gap-8">
               {stats.map((s) => (
                 <div key={s.label} className="text-center">
-                  <div className="text-white text-2xl font-bold" style={{ fontFamily: '"Frank Ruhl Libre", serif' }}>{s.value}</div>
-                  <div className="text-green-300 text-xs">{s.label}</div>
+                  <div className="text-forest-800 text-2xl font-bold" style={{ fontFamily: '"Frank Ruhl Libre", serif' }}>{s.value}</div>
+                  <div className="text-forest-500 text-xs">{s.label}</div>
                 </div>
               ))}
             </div>
