@@ -1,4 +1,4 @@
-const PHOTO_URL = "https://cdn.poehali.dev/projects/9681f9cf-1910-4e6b-81b0-1141b86e5856/files/32f5f477-70aa-438a-a0a6-a6fbe60e52d7.jpg";
+const PHOTO_URL = "https://cdn.poehali.dev/files/8e5ae8e1-10d9-457d-b977-a256d006d881.jpg";
 
 const stats = [
   { value: "15+", label: "שנות ניסיון" },
