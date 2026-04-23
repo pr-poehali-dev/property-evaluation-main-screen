@@ -1,5 +1,5 @@
 const PHOTO_URL =
-  "https://cdn.poehali.dev/projects/9681f9cf-1910-4e6b-81b0-1141b86e5856/bucket/389c5f12-e0b8-40c9-ae15-291311b2b3a3.jpg";
+  "https://cdn.poehali.dev/projects/9681f9cf-1910-4e6b-81b0-1141b86e5856/bucket/fbef8a9a-ae90-47cf-a7e5-ac231c44c6ae.png";
 
 const stats = [
   { value: "15+", label: "שנות ניסיון" },
@@ -172,9 +172,7 @@ export default function Index() {
                 width: "auto",
                 objectFit: "contain",
                 objectPosition: "bottom center",
-                // Key: remove white bg by multiply blend — person stays, white disappears
-                mixBlendMode: "multiply",
-                filter: "contrast(1.05)",
+                filter: "drop-shadow(0 20px 60px rgba(0,0,0,0.13))",
               }}
             />
           </div>
@@ -217,7 +215,7 @@ export default function Index() {
               src={PHOTO_URL}
               alt="ראש החברה"
               className="h-[370px] w-auto object-contain object-bottom"
-              style={{ mixBlendMode: "multiply", filter: "contrast(1.05)" }}
+              style={{ filter: "drop-shadow(0 10px 30px rgba(0,0,0,0.10))" }}
             />
           </div>
         </div>
