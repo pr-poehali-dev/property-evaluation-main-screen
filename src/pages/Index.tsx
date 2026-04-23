@@ -1,6 +1,9 @@
 const PHOTO_URL =
   "https://cdn.poehali.dev/projects/9681f9cf-1910-4e6b-81b0-1141b86e5856/bucket/fbef8a9a-ae90-47cf-a7e5-ac231c44c6ae.png";
 
+const BG_URL =
+  "https://cdn.poehali.dev/projects/9681f9cf-1910-4e6b-81b0-1141b86e5856/files/89a85a64-2aa6-4899-b817-3d31d20da859.jpg";
+
 const stats = [
   { value: "15+", label: "שנות ניסיון" },
   { value: "2,400+", label: "שמאויות" },
@@ -9,11 +12,10 @@ const stats = [
 
 export default function Index() {
   return (
-    // NO dir="rtl" on root — we handle text alignment manually per block
     <div className="min-h-screen bg-white overflow-hidden" style={{ fontFamily: "Heebo, sans-serif" }}>
 
       {/* ===== NAV ===== */}
-      <header className="absolute top-0 left-0 right-0 z-30 flex items-center justify-between px-10 md:px-16 py-7">
+      <header className="absolute top-0 left-0 right-0 z-30 flex items-center justify-between px-10 md:px-16 py-7 backdrop-blur-[2px]">
         {/* Logo — left */}
         <div className="opacity-0 animate-fade-in" style={{ animationFillMode: "forwards" }}>
           <span
@@ -40,6 +42,25 @@ export default function Index() {
 
       {/* ===== HERO ===== */}
       <div className="relative min-h-screen flex flex-row">
+
+        {/* Background image */}
+        <div className="absolute inset-0 z-0">
+          <img
+            src={BG_URL}
+            alt=""
+            className="w-full h-full object-cover object-center"
+          />
+          {/* Strong overlay on left (text area) — white fade for readability */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: "linear-gradient(to right, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.92) 35%, rgba(255,255,255,0.5) 60%, rgba(255,255,255,0.0) 100%)",
+            }}
+          />
+          {/* Top and bottom fades */}
+          <div className="absolute top-0 left-0 right-0 h-32" style={{ background: "linear-gradient(to bottom, rgba(255,255,255,0.6) 0%, transparent 100%)" }} />
+          <div className="absolute bottom-0 left-0 right-0 h-24" style={{ background: "linear-gradient(to top, rgba(255,255,255,0.8) 0%, transparent 100%)" }} />
+        </div>
 
         {/* ---- LEFT: TEXT COLUMN ---- */}
         <div className="relative z-10 flex flex-col justify-center w-full lg:w-[52%] px-10 md:px-16 pt-32 pb-20 min-h-screen">
