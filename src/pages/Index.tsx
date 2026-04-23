@@ -9,13 +9,12 @@ const stats = [
 
 export default function Index() {
   return (
-    <div
-      dir="rtl"
-      className="min-h-screen bg-white overflow-hidden"
-      style={{ fontFamily: "Heebo, sans-serif" }}
-    >
+    // NO dir="rtl" on root — we handle text alignment manually per block
+    <div className="min-h-screen bg-white overflow-hidden" style={{ fontFamily: "Heebo, sans-serif" }}>
+
       {/* ===== NAV ===== */}
-      <header className="absolute top-0 right-0 left-0 z-30 flex items-center justify-between px-10 md:px-16 py-7">
+      <header className="absolute top-0 left-0 right-0 z-30 flex items-center justify-between px-10 md:px-16 py-7">
+        {/* Logo — left */}
         <div className="opacity-0 animate-fade-in" style={{ animationFillMode: "forwards" }}>
           <span
             className="text-forest-900 text-lg font-bold tracking-wide"
@@ -24,29 +23,31 @@ export default function Index() {
             שמאות מקרקעין
           </span>
         </div>
+        {/* Nav links — right, RTL text */}
         <nav
           className="hidden md:flex gap-10 text-sm font-medium text-forest-600 opacity-0 animate-fade-in"
           style={{ animationFillMode: "forwards", animationDelay: "0.2s" }}
+          dir="rtl"
         >
           {["שירותים", "אודות", "צור קשר"].map((item) => (
-            <a key={item} href="#" className="relative group text-forest-600 hover:text-forest-900 transition-colors duration-200">
+            <a key={item} href="#" className="relative group hover:text-forest-900 transition-colors duration-200">
               {item}
-              <span className="absolute -bottom-0.5 right-0 left-0 h-px bg-forest-700 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-right" />
+              <span className="absolute -bottom-0.5 left-0 right-0 h-px bg-forest-700 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
             </a>
           ))}
         </nav>
       </header>
 
       {/* ===== HERO ===== */}
-      <div className="relative min-h-screen flex">
+      <div className="relative min-h-screen flex flex-row">
 
-        {/* ---- LEFT TEXT COLUMN ---- */}
-        <div className="relative z-10 flex flex-col justify-center w-full lg:w-[55%] px-10 md:px-16 pt-32 pb-20 min-h-screen">
+        {/* ---- LEFT: TEXT COLUMN ---- */}
+        <div className="relative z-10 flex flex-col justify-center w-full lg:w-[52%] px-10 md:px-16 pt-32 pb-20 min-h-screen">
 
           {/* Label */}
           <div
             className="flex items-center gap-3 mb-10 opacity-0 animate-fade-up"
-            style={{ animationFillMode: "forwards" }}
+            style={{ animationFillMode: "forwards", direction: "rtl" }}
           >
             <div className="w-8 h-px bg-forest-700" />
             <span className="text-forest-600 text-xs font-medium tracking-[0.2em] uppercase">
@@ -54,17 +55,19 @@ export default function Index() {
             </span>
           </div>
 
-          {/* BIG headline */}
+          {/* BIG headline — RTL text, left-aligned column */}
           <h1
             className="opacity-0 animate-fade-up-delay"
+            dir="rtl"
             style={{
               fontFamily: '"Frank Ruhl Libre", serif',
               animationFillMode: "forwards",
-              fontSize: "clamp(2.6rem, 5vw, 4.4rem)",
+              fontSize: "clamp(2.8rem, 4.5vw, 4.6rem)",
               lineHeight: 1.13,
               fontWeight: 900,
               color: "#0f2b12",
               letterSpacing: "-0.01em",
+              textAlign: "right",
             }}
           >
             שמאות מקרקעין<br />
@@ -73,18 +76,24 @@ export default function Index() {
             ודאות מלאה
           </h1>
 
-          {/* Thick green underline */}
+          {/* Accent bar */}
           <div
             className="mt-6 mb-8 opacity-0 animate-fade-up-delay"
             style={{ animationFillMode: "forwards", animationDelay: "0.3s" }}
           >
-            <div className="h-1 w-20 bg-forest-700 rounded-full" />
+            <div className="h-[3px] w-20 bg-forest-700 rounded-full" />
           </div>
 
           {/* Body text */}
           <p
-            className="text-forest-800 opacity-0 animate-fade-up-delay2 max-w-[480px]"
-            style={{ animationFillMode: "forwards", fontSize: "1.05rem", lineHeight: 1.8 }}
+            className="text-forest-700 opacity-0 animate-fade-up-delay2 max-w-[500px]"
+            dir="rtl"
+            style={{
+              animationFillMode: "forwards",
+              fontSize: "1.05rem",
+              lineHeight: 1.85,
+              textAlign: "right",
+            }}
           >
             ליווי של שמאי מקרקעין מקצועי ואנושי מאפשר לכם לגשת לעסקה
             הגדולה בחיים עם ודאות מלאה, לקבל החלטה מושכלת ולהתקדם לסגירה
@@ -92,12 +101,16 @@ export default function Index() {
           </p>
 
           {/* CTA */}
-          <div className="mt-10 opacity-0 animate-fade-up-delay3" style={{ animationFillMode: "forwards" }}>
+          <div
+            className="mt-10 opacity-0 animate-fade-up-delay3"
+            style={{ animationFillMode: "forwards" }}
+            dir="rtl"
+          >
             <button
-              className="group relative overflow-hidden bg-forest-800 text-white text-base font-semibold px-10 py-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl hover:shadow-forest-900/30"
+              className="group relative overflow-hidden bg-forest-800 text-white text-base font-semibold px-10 py-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-2xl hover:shadow-forest-900/25"
               style={{ letterSpacing: "0.02em" }}
             >
-              <span className="absolute inset-0 bg-forest-700 scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-right" />
+              <span className="absolute inset-0 bg-forest-600 translate-x-full group-hover:translate-x-0 transition-transform duration-300" />
               <span className="relative">לתיאום שיחת ייעוץ ללא עלות</span>
             </button>
             <p className="text-forest-400 text-xs mt-3 tracking-wide">
@@ -107,20 +120,20 @@ export default function Index() {
 
           {/* Stats */}
           <div
-            className="mt-16 flex gap-10 opacity-0 animate-fade-up-delay3"
-            style={{ animationFillMode: "forwards", animationDelay: "0.65s" }}
+            className="mt-16 flex gap-0 opacity-0 animate-fade-up-delay3"
+            style={{ animationFillMode: "forwards", animationDelay: "0.7s" }}
           >
             {stats.map((s, i) => (
-              <div key={s.label} className="flex items-start gap-3">
-                {i > 0 && <div className="w-px h-10 bg-forest-200 self-center" />}
-                <div>
+              <div key={s.label} className="flex items-stretch">
+                {i > 0 && <div className="w-px bg-forest-200 mx-8 self-stretch" />}
+                <div dir="rtl">
                   <div
                     className="text-forest-900 font-bold leading-none"
-                    style={{ fontFamily: '"Frank Ruhl Libre", serif', fontSize: "1.9rem" }}
+                    style={{ fontFamily: '"Frank Ruhl Libre", serif', fontSize: "2rem" }}
                   >
                     {s.value}
                   </div>
-                  <div className="text-forest-500 text-xs mt-1 tracking-wide">{s.label}</div>
+                  <div className="text-forest-500 text-xs mt-1.5 tracking-wide">{s.label}</div>
                 </div>
               </div>
             ))}
@@ -128,31 +141,58 @@ export default function Index() {
         </div>
 
         {/* ---- RIGHT: CUTOUT PERSON ---- */}
+        {/* 
+          The photo already has background — we simulate cutout by:
+          1. Showing photo full height
+          2. Adding a white gradient from right edge to hide background
+          3. Using drop-shadow for depth
+        */}
         <div
-          className="hidden lg:flex absolute left-0 top-0 bottom-0 w-[50%] items-end justify-center z-0 pointer-events-none opacity-0 animate-slide-in-right"
-          style={{ animationFillMode: "forwards" }}
+          className="hidden lg:block absolute right-0 top-0 bottom-0 w-[52%] pointer-events-none"
         >
+          {/* Subtle green glow at bottom */}
           <div
-            className="absolute inset-0"
+            className="absolute bottom-0 left-0 right-0 h-64 z-10"
             style={{
-              background: "radial-gradient(ellipse 80% 60% at 50% 100%, rgba(38,107,43,0.07) 0%, transparent 70%)",
+              background: "radial-gradient(ellipse 100% 100% at 50% 100%, rgba(38,107,43,0.06) 0%, transparent 70%)",
             }}
           />
-          <img
-            src={PHOTO_URL}
-            alt="ראש החברה"
-            className="relative z-10 w-auto object-contain object-bottom"
-            style={{
-              height: "94vh",
-              maxHeight: "900px",
-              filter: "drop-shadow(-12px 0 40px rgba(0,0,0,0.10))",
-            }}
+
+          {/* Person image — bottom-aligned, full height */}
+          <div
+            className="absolute inset-0 flex items-end justify-center overflow-hidden opacity-0 animate-slide-in-right"
+            style={{ animationFillMode: "forwards" }}
+          >
+            <img
+              src={PHOTO_URL}
+              alt="ראש החברה"
+              style={{
+                height: "96vh",
+                maxHeight: "920px",
+                width: "auto",
+                objectFit: "contain",
+                objectPosition: "bottom center",
+                // Key: remove white bg by multiply blend — person stays, white disappears
+                mixBlendMode: "multiply",
+                filter: "contrast(1.05)",
+              }}
+            />
+          </div>
+
+          {/* Fade from right edge back to white — removes any background remnants */}
+          <div
+            className="absolute top-0 right-0 bottom-0 w-16 z-20"
+            style={{ background: "linear-gradient(to left, white 0%, transparent 100%)" }}
+          />
+          <div
+            className="absolute top-0 bottom-0 left-0 w-8 z-20"
+            style={{ background: "linear-gradient(to right, white 0%, transparent 100%)" }}
           />
         </div>
 
         {/* ---- MOBILE ---- */}
         <div className="lg:hidden w-full flex flex-col">
-          <div className="px-6 pt-28 pb-6">
+          <div className="px-6 pt-28 pb-6" dir="rtl">
             <div className="flex items-center gap-3 mb-5">
               <div className="w-7 h-px bg-forest-600" />
               <span className="text-forest-600 text-xs tracking-widest uppercase">שמאי מקרקעין מוסמך</span>
@@ -163,7 +203,7 @@ export default function Index() {
             >
               שמאות מקרקעין <span className="text-forest-700">שמייצרת</span> ודאות מלאה
             </h1>
-            <div className="h-1 w-14 bg-forest-700 rounded-full mb-5" />
+            <div className="h-[3px] w-14 bg-forest-700 rounded-full mb-5" />
             <p className="text-forest-700 text-base leading-relaxed mb-7">
               ליווי של שמאי מקרקעין מקצועי ואנושי מאפשר לכם לגשת לעסקה הגדולה בחיים עם ודאות מלאה, לקבל החלטה מושכלת ולהתקדם לסגירה בלי הפתעות שיעלו ביוקר.
             </p>
@@ -172,22 +212,22 @@ export default function Index() {
             </button>
             <p className="text-forest-400 text-xs text-center">✓ ללא התחייבות · ✓ תגובה תוך 24 שעות</p>
           </div>
-          <div className="flex justify-center bg-gradient-to-b from-white to-forest-50 pt-4">
+          <div className="flex justify-center overflow-hidden" style={{ background: "linear-gradient(to bottom, white, #f0f7f0)" }}>
             <img
               src={PHOTO_URL}
               alt="ראש החברה"
-              className="h-[380px] w-auto object-contain object-bottom"
-              style={{ filter: "drop-shadow(0 -4px 20px rgba(0,0,0,0.08))" }}
+              className="h-[370px] w-auto object-contain object-bottom"
+              style={{ mixBlendMode: "multiply", filter: "contrast(1.05)" }}
             />
           </div>
         </div>
       </div>
 
       {/* ===== TRUST BAR ===== */}
-      <div className="bg-forest-950 px-10 md:px-16 py-5 flex flex-wrap items-center justify-end gap-8 relative z-20">
+      <div className="bg-forest-950 px-10 md:px-16 py-5 flex flex-wrap items-center justify-end gap-8 relative z-20" dir="rtl">
         {["רשיון שמאי מקרקעין", "חבר לשכת שמאי המקרקעין", "ביטוח מקצועי מלא"].map((item) => (
           <div key={item} className="flex items-center gap-2 text-sm text-green-300">
-            <span className="text-green-400 text-base">✓</span>
+            <span className="text-green-400">✓</span>
             {item}
           </div>
         ))}
